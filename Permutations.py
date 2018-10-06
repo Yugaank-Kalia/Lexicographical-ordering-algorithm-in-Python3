@@ -14,14 +14,14 @@ total = list()
 
 
 def getvalue():
-    n = []
+    arr = []
     while True:
         i = input("Enter q to exit : ")
         if(i != 'q'):
-            n.append(int(i))
+            arr.append(int(i))
         else:
             break
-    return (n)
+    return (arr)
 
 
 def permutations():
