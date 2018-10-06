@@ -1,57 +1,61 @@
-
-'''     									Lexical ordering algorithm 											'''
-# importing dependencies 
+# importing dependencies
 
 import math
 
-def swap(array,i,j):
-	
-	array[i],array[j] = array[j],array[i]
 
-value = list()
+def swap(array, i, j):
+
+    array[i], array[j] = array[j], array[i]
+
+
+# global variables
+
 total = list()
 
-def permutations(n):
 
-	value = [1,2,3]
+def getvalue():
+    n = []
+    while True:
+        i = input("Enter q to exit : ")
+        if(i != 'q'):
+            n.append(int(i))
+        else:
+            break
+    return (n)
 
-	# STEP 1
 
-	for z in range(math.factorial(len(value))):
+def permutations():
 
-		print (value)
+    value = getvalue()
+    for z in range(math.factorial(len(value))):
+        total.append(value)
 
-		for k in range(math.factorial(len(value))):
-			
-			largestX = -1
-			
-			for i in range(len(value)-1):
-			
-				if (value[i]<value[i+1]):
-			
-					largestX = i
+        for k in range(math.factorial(len(value))):
+            largestX = -1
 
-			# STEP 2
+            for i in range(len(value) - 1):
+                if (value[i] < value[i + 1]):
+                    largestX = i
 
-			largestY = -1
-			
-			for j in range(len(value)): 
-			
-				if (value[largestX] < value[j]): 
-			
-					largestY = j
+            largestY = -1
 
-			# STEP 3
+            for j in range(len(value)):
 
-			swap(value,largestX,largestY)
+                if (value[largestX] < value[j]):
 
-			# STEP 4
+                    largestY = j
 
-			
-			endArray = value[largestX+1:]
-			
-			value = value[:largestX+1]
-			
-			endArray.reverse()
-			
-			value.extend(endArray)
+            swap(value, largestX, largestY)
+
+            endArray = value[largestX + 1:]
+
+            value = value[:largestX + 1]
+
+            endArray.reverse()
+
+            value.extend(endArray)
+
+    return (total)
+
+
+print(permutations())
